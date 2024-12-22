@@ -5,7 +5,7 @@ namespace EmployeeRecordsInsert.Models
     public class EmployeeData
     {
         [Key] // Primary Key
-        public int EmployeeCode { get; set; }
+        public int EmployeeId { get; set; }
 
         [Required]
         public string EmployeeName { get; set; }

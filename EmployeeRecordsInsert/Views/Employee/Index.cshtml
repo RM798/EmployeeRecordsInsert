@@ -1,25 +1,96 @@
-﻿@* @{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
- *@
-
+﻿
  @model IEnumerable<EmployeeRecordsInsert.Models.EmployeeData>
 
 @{
     ViewBag.Title = "Employee List";
 }
 
-<h2>Employee List</h2>
+<div class="container">
+    <div class="row pt-4 pb-2">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Employee List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+           @*  <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Register New Employee
+            </a> *@
+            <button type="button" id="saveButton" onclick="saveData()">
+                Register New Employee
+            </button>
+        </div>
+
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth.ToShortDateString())
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender ? "Male" : "Female")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasicSalary)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* <h2>Employee List</h2>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Employee Code</th>
+            <th>Employee Id</th>
             <th>Employee Name</th>
             <th>Date of Birth</th>
             <th>Gender</th>
@@ -32,7 +103,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.EmployeeCode</td>
+                <td>@item.EmployeeId</td>
                 <td>@item.EmployeeName</td>
                 <td>@item.DateOfBirth.ToShortDateString()</td>
                 <td>@(item.Gender ? "Male" : "Female")</td>
@@ -43,3 +114,5 @@
         }
     </tbody>
 </table>
+ *@
+

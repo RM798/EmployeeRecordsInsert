@@ -27,7 +27,7 @@ namespace EmployeeRecordsInsert.Controllers
         public EmployeeData Save(EmployeeData details)
         {
             EmployeeData newdata = new EmployeeData();
-            newdata.EmployeeCode = details.EmployeeCode;
+            newdata.EmployeeId = details.EmployeeId;
             newdata.EmployeeName = details.EmployeeName;
             newdata.BasicSalary = details.BasicSalary;
             newdata.DateOfBirth = details.DateOfBirth;
@@ -49,6 +49,10 @@ namespace EmployeeRecordsInsert.Controllers
         public ActionResult Index()
         {
             var employees = _context.EmployeeRecord.ToList();
+            if (employees == null)
+            {
+                return NotFound();
+            }
             return View(employees); // Display the list of employees
         }
 
